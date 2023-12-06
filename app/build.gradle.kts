@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
 }
 
 android {
@@ -54,6 +55,18 @@ dependencies {
     implementation("com.squareup.retrofit2:retrofit: 2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
-    //ViewModel
+    //Corrutinas
+    implementation ("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
 
+    //Room
+    implementation ("androidx.room:room-ktx:2.4.0")
+    kapt("androidx.room:room-compiler:2.3.0")
+
+    //ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1")
+
+    //Koin
+    implementation("io.coil-kt:coil:1.1.0")
+
+    implementation("io.insert-koin:koin-android:3.1.5")
 }
