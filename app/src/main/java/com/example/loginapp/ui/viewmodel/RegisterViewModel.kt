@@ -13,10 +13,10 @@ class RegisterViewModel(private val userRepository: UserRepository) : ViewModel(
     val messageResponse: LiveData<String> get() = _messageResponse
     private val _messageResponse= MutableLiveData<String>()
 
-    fun callServiceUser(nombre: String, pass: String) {
+    fun callServiceUser(hash: HashMap<String, String>) {
         //println("algo")
         viewModelScope.launch {
-            val messageApi = userRepository.callServiceRegister(nombre, pass)
+            val messageApi = userRepository.callServiceRegister(hash)
             _messageResponse.postValue(messageApi)
         }
     }

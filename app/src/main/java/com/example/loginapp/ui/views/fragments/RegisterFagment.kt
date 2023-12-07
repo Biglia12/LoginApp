@@ -42,7 +42,7 @@ class RegisterFagment : Fragment() {
             hash["nombre"] = user
             hash["pass"] = pass
 
-            registerViewModel.callServiceUser(user, pass)
+            registerViewModel.callServiceUser(hash)
         }
 
         obserVer()
