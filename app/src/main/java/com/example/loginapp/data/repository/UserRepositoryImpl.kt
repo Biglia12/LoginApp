@@ -5,9 +5,9 @@ import com.example.loginapp.data.network.Api
 import com.example.loginapp.domain.repository.UserRepository
 
 class UserRepositoryImpl(private val api: Api) : UserRepository {
-    override suspend fun callServiceRegister(hash: HashMap<String, String>): String {
+    override suspend fun callServiceRegister(user: String, pass: String): String {
         try {
-            val response = api.callLogin(hash)
+            val response = api.callLogin(user, pass)
             if (response.isSuccessful) {
                 return response.body().toString()
                 Log.i("ResponseUser", response.toString())

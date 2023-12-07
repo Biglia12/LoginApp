@@ -38,11 +38,12 @@ class RegisterFagment : Fragment() {
 
             user = binding.editTextUser.text.toString()
             pass = binding.editTextPass.text.toString()
-            val hash = HashMap<String, String>()
+            //val user = UserModel(user,pass)
+        /*    val hash = HashMap<String, String>()
             hash["nombre"] = user
-            hash["pass"] = pass
+            hash["pass"] = pass*/
 
-            registerViewModel.callServiceUser(hash)
+            registerViewModel.callServiceUser(user, pass)
         }
 
         obserVer()
