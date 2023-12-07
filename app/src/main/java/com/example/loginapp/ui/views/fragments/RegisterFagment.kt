@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
 import com.example.loginapp.ui.viewmodel.RegisterViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -13,7 +12,10 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class RegisterFagment : Fragment() {
 
     private lateinit var binding: FragmentRegisterFagmentBinding
-    private val registerViewModel: RegisterViewModel by viewModel()
+   // private val registerViewModel: RegisterViewModel by viewModel()
+    private val registerViewModel by viewModel<RegisterViewModel>()
+    private lateinit var user: String
+    private lateinit var pass: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,6 +27,24 @@ class RegisterFagment : Fragment() {
                               savedInstanceState: Bundle?): View? {
         binding = FragmentRegisterFagmentBinding.inflate(inflater)
         return binding.getRoot()
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        binding.button2.setOnClickListener {
+
+            user = binding.editTextUser.text.toString()
+            pass = binding.editTextPass.text.toString()
+            val hash = HashMap<String, String>()
+            hash["nombre"] = user
+            hash["pass"] = pass
+
+            registerViewModel.callServiceUser(hash)
+        }
+
+
     }
 
 

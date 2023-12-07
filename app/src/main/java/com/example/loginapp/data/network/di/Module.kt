@@ -8,14 +8,17 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 val networkModule = module {
-    single { createRetrofit(Constants.BASE_URL_LOGIN) }
+    //single { createRetrofit(Constants.BASE_URL_LOGIN) }
 }
 
 
-fun createRetrofit(/*httpClient: OkHttpClient,*/ baseUrl: String): Retrofit {
+/*
+fun createRetrofit(*/
+/*httpClient: OkHttpClient,*//*
+ baseUrl: String): Retrofit {
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         //.client(httpClient)
         .build()
-}
+}*/
