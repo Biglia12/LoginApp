@@ -1,5 +1,5 @@
 package com.example.loginapp.domain.repository
 
 interface UserRepository {
-    suspend fun callServiceRegister(requestBody: HashMap<String, String>)
+    suspend fun callServiceRegister(nombre: String, pass: String): String
 }
