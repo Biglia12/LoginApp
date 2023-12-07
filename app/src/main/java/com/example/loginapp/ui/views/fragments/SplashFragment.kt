@@ -5,9 +5,14 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import com.example.loginapp.R
+import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
+import com.example.loginapp.databinding.FragmentSplasBinding
 
 class SplashFragment : Fragment() {
+
+    private lateinit var binding: FragmentSplasBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,8 +23,16 @@ class SplashFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_splas, container, false)
+        binding = FragmentSplasBinding.inflate(inflater)
+
+        binding.btnSplash.setOnClickListener {
+            findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+        }
+
+
+        return binding.getRoot()
+
+
     }
 
 }
