@@ -2,8 +2,10 @@ package com.example.loginapp.di
 
 
 import com.example.loginapp.data.network.Api
+import com.example.loginapp.data.network.UserService
 import com.example.loginapp.data.repository.UserRepositoryImpl
 import com.example.loginapp.domain.repository.UserRepository
+import com.example.loginapp.domain.usecase.UserUseCase
 import com.example.loginapp.ui.viewmodel.RegisterViewModel
 import com.example.loginapp.utils.Constants
 import com.google.gson.Gson
@@ -20,12 +22,20 @@ val appModule = module {
 
     // Declara el RegisterViewModel con la dependencia de UserRepository
     viewModel {
-        RegisterViewModel(userRepository = get())
+        RegisterViewModel(userUseCase = get())
     }
 
     // Declara el UserRepository con la implementación proporcionada por UserRepositoryImpl
     single<UserRepository> {
-        UserRepositoryImpl(api = get())
+        UserRepositoryImpl(userService = get())
+    }
+
+    single {
+        UserUseCase(get())
+    }
+
+    single {
+        UserService(get())
     }
 
 }
