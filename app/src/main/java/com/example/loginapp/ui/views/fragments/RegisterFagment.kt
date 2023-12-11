@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
 import com.example.loginapp.ui.viewmodel.RegisterViewModel
@@ -35,7 +36,6 @@ class RegisterFagment : Fragment() {
 
 
         binding.button2.setOnClickListener {
-
             user = binding.editTextUser.text.toString()
             pass = binding.editTextPass.text.toString()
             //val user = UserModel(user,pass)
@@ -52,6 +52,10 @@ class RegisterFagment : Fragment() {
     }
 
     private fun obserVer() {
+        registerViewModel.progressBar.observe( viewLifecycleOwner){
+            binding.loaderContainer.isVisible = it
+        }
+
         registerViewModel.messageResponse.observe(viewLifecycleOwner){
             Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
         }
