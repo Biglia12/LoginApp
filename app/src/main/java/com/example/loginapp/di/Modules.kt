@@ -17,40 +17,10 @@ import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
 
 val appModule = module {
-    // Declara el retrofit como un singleton directamente
-    single { createRetrofit(Constants.BASE_URL_LOGIN) }
 
     // Declara el RegisterViewModel con la dependencia de UserRepository
     viewModel {
-        RegisterViewModel(userUseCase = get())
+        RegisterViewModel(get())
     }
-
-    // Declara el UserRepository con la implementación proporcionada por UserRepositoryImpl
-    single<UserRepository> {
-        UserRepositoryImpl(userService = get())
-    }
-
-    single {
-        UserUseCase(get())
-    }
-
-    single {
-        UserService(get())
-    }
-
 }
 
-fun createRetrofit(baseUrl: String): Api {
-    return Retrofit.Builder()
-        .baseUrl(baseUrl)
-        .addConverterFactory(ScalarsConverterFactory.create()) //important
-        .addConverterFactory(GsonConverterFactory.create(gson()))
-        .build()
-        .create(Api::class.java)
-}
-
-fun gson(): Gson {
-   return GsonBuilder()
-       .setLenient()
-       .create()
-}

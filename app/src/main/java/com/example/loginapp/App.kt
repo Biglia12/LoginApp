@@ -1,12 +1,14 @@
 package com.example.loginapp
 
 import android.app.Application
+import com.example.loginapp.data.network.di.networkModule
+import com.example.loginapp.data.repository.di.userRepositoryModules
 import com.example.loginapp.di.appModule
+import com.example.loginapp.domain.di.userUseCaseModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import org.koin.core.logger.Level
-import org.koin.core.module.Module
 
 class App: Application() {
     override fun onCreate() {
@@ -21,7 +23,8 @@ class App: Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@App)
-            modules(appModule)
+            modules(appModule, userUseCaseModule, userRepositoryModules, networkModule)
+            //modules(appModule, userUseCaseModule,userRepositoryModules, networkModule)
             //androidLogger(Level.ERROR)
             //androidContext(app)
             //modules(appModules)

@@ -1,12 +1,17 @@
 package com.example.loginapp.data.repository.di
 
+import com.example.loginapp.data.network.UserService
 import com.example.loginapp.data.repository.UserRepositoryImpl
-import com.example.loginapp.ui.viewmodel.RegisterViewModel
-import org.koin.androidx.viewmodel.dsl.viewModel
+import com.example.loginapp.domain.repository.UserRepository
 import org.koin.dsl.module
 
-/*
-val repositoryModules = module {
-    single<UserRepositoryImpl> { UserRepositoryImpl(get()) }
-    viewModel{RegisterViewModel(get())}
-}*/
+
+val userRepositoryModules = module {
+    single<UserRepository> {
+        UserRepositoryImpl(userService = get())
+    }
+
+    single {
+        UserService(get())
+    }
+}
