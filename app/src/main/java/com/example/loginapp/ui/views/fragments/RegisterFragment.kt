@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import com.example.loginapp.R
@@ -13,7 +12,7 @@ import com.example.loginapp.ui.viewmodel.RegisterViewModel
 import com.example.loginapp.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class RegisterFagment : Fragment() {
+class RegisterFragment : Fragment() {
 
     private lateinit var binding: FragmentRegisterFagmentBinding
 
