@@ -7,14 +7,17 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.example.loginapp.R
 import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
 import com.example.loginapp.ui.viewmodel.RegisterViewModel
+import com.example.loginapp.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class RegisterFagment : Fragment() {
 
     private lateinit var binding: FragmentRegisterFagmentBinding
-   // private val registerViewModel: RegisterViewModel by viewModel()
+
+    // private val registerViewModel: RegisterViewModel by viewModel()
     private val registerViewModel by viewModel<RegisterViewModel>()
     private lateinit var user: String
     private lateinit var pass: String
@@ -25,8 +28,10 @@ class RegisterFagment : Fragment() {
 
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
         binding = FragmentRegisterFagmentBinding.inflate(inflater)
         return binding.getRoot()
     }
@@ -38,10 +43,6 @@ class RegisterFagment : Fragment() {
         binding.button2.setOnClickListener {
             user = binding.editTextUser.text.toString()
             pass = binding.editTextPass.text.toString()
-            //val user = UserModel(user,pass)
-        /*    val hash = HashMap<String, String>()
-            hash["nombre"] = user
-            hash["pass"] = pass*/
 
             registerViewModel.callServiceUser(user, pass)
         }
@@ -52,12 +53,18 @@ class RegisterFagment : Fragment() {
     }
 
     private fun obserVer() {
-        registerViewModel.progressBar.observe( viewLifecycleOwner){
+
+        registerViewModel.progressBar.observe(viewLifecycleOwner) {
             binding.loaderContainer.isVisible = it
         }
 
-        registerViewModel.messageResponse.observe(viewLifecycleOwner){
-            Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        registerViewModel.messageResponse.observe(viewLifecycleOwner) {
+            requireContext().toast(it)
+            //Toast.makeText(requireContext(), it, Toast.LENGTH_LONG).show()
+        }
+
+        registerViewModel.errorService.observe(viewLifecycleOwner){
+            requireContext().toast(resources.getString(R.string.error_service))
         }
     }
 

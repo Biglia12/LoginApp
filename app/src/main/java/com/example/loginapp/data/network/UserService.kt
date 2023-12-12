@@ -2,11 +2,11 @@ package com.example.loginapp.data.network
 
 import android.util.Log
 import com.example.loginapp.data.model.UserModel
-import com.example.loginapp.data.model.UserResponseRegisterModel
+import com.example.loginapp.data.model.UserRegisterResponse
 
 class UserService(private val api: Api) {
 
-    suspend fun callServiceRegister(hashMap: String, pass: String): UserResponseRegisterModel? {
+    suspend fun callServiceRegister(hashMap: String, pass: String): UserRegisterResponse? {
         // return withContext(Dispatchers.IO) {
         try {
             val response = api.callLogin(hashMap, pass)
