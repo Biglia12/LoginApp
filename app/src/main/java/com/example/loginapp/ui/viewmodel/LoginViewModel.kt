@@ -9,10 +9,6 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class LoginViewModel(val loginUseCase: LoginUseCase) : ViewModel() {
-
-    val messageResponse: LiveData<String> get() = _messageResponse
-    private val _messageResponse = MutableLiveData<String>()
-
     val progressBar: LiveData<Boolean> get() = _progressBar
     private val _progressBar = MutableLiveData<Boolean>()
     val errorService: LiveData<Boolean> get() = _errorService
@@ -28,18 +24,14 @@ class LoginViewModel(val loginUseCase: LoginUseCase) : ViewModel() {
             val apiRegister = loginUseCase.login(user, pass)
             if (apiRegister != null) {
                 if (!apiRegister.error) {
-                    _messageResponse.postValue(apiRegister.message)
                     _userLogued.postValue(true)
                 } else {
-                    _messageResponse.postValue(apiRegister.message)
                     _userLogued.postValue(false)
                 }
             } else {
                 _errorService.postValue(true)
             }
             _progressBar.postValue(false)
-            //val getUser = userUseCase.getUser(idUser)
-            //println(getUser)// es para obtener el usuario
         }
     }
 

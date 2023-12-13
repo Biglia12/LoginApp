@@ -65,15 +65,11 @@ class LoginFragment : Fragment() {
 
         // Observa la propiedad userLogued
         loginViewModel.userLogued.observe(viewLifecycleOwner, Observer { userLogued ->
-            // Muestra el mensaje de respuesta, independientemente de si el usuario ha iniciado sesión o no
-            loginViewModel.messageResponse.observe(viewLifecycleOwner, Observer { messageResponse ->
-                // Muestra el mensaje en la interfaz de usuario (por ejemplo, en un TextView)
-                context?.toast(messageResponse)
-            })
-
             // Navega a homeFragment si el usuario ha iniciado sesión
             if (userLogued) {
                 findNavController().navigate(R.id.homeFragment)
+            } else{
+                context?.toast(resources.getString(R.string.error_user))
             }
         })
 
