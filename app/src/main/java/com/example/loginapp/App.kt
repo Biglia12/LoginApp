@@ -2,6 +2,7 @@ package com.example.loginapp
 
 import android.app.Application
 import com.example.loginapp.data.network.di.networkModule
+import com.example.loginapp.data.repository.di.loginRespositoryModule
 import com.example.loginapp.data.repository.di.userRepositoryModules
 import com.example.loginapp.di.appModule
 import com.example.loginapp.domain.di.loginUseCaseModule
@@ -24,7 +25,7 @@ class App: Application() {
         startKoin {
             androidLogger(Level.ERROR)
             androidContext(this@App)
-            modules(appModule, userUseCaseModule, loginUseCaseModule, userRepositoryModules, networkModule)
+            modules(appModule, userUseCaseModule, loginUseCaseModule, userRepositoryModules, loginRespositoryModule, networkModule)
             //modules(appModule, userUseCaseModule,userRepositoryModules, networkModule)
             //androidLogger(Level.ERROR)
             //androidContext(app)

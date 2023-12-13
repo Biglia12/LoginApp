@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.loginapp.R
 import com.example.loginapp.databinding.FragmentLoginBinding
@@ -39,15 +41,43 @@ class LoginFragment : Fragment() {
            val pass: String = binding.editTextPass.text.toString()
 
            if (user.isNotEmpty() || pass.isNotEmpty()){
-               loginViewModel.
+               loginViewModel.callServiceLogin(user, pass)
            }else{
                requireContext().toast("Campos vacios")
            }
 
-           findNavController().navigate(R.id.homeFragment)
        }
 
+        obserVer()
+
         return binding.getRoot()
+    }
+
+    fun obserVer(){
+
+        loginViewModel.progressBar.observe(viewLifecycleOwner){
+            binding.loaderContainer.isVisible = it
+        }
+
+        loginViewModel.errorService.observe(viewLifecycleOwner){
+            context?.toast(resources.getString(R.string.error_service))
+        }
+
+        // Observa la propiedad userLogued
+        loginViewModel.userLogued.observe(viewLifecycleOwner, Observer { userLogued ->
+            // Muestra el mensaje de respuesta, independientemente de si el usuario ha iniciado sesión o no
+            loginViewModel.messageResponse.observe(viewLifecycleOwner, Observer { messageResponse ->
+                // Muestra el mensaje en la interfaz de usuario (por ejemplo, en un TextView)
+                context?.toast(messageResponse)
+            })
+
+            // Navega a homeFragment si el usuario ha iniciado sesión
+            if (userLogued) {
+                findNavController().navigate(R.id.homeFragment)
+            }
+        })
+
+
     }
 
 }

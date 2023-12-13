@@ -1,6 +1,7 @@
 package com.example.loginapp.domain.repository
 
-interface LoginRepository {
+import com.example.loginapp.data.model.LoginResponse
 
-    suspend fun callServiceLogin()
+interface LoginRepository {
+    suspend fun callServiceLogin(user: String, pass: String): LoginResponse?
 }

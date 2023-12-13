@@ -1,5 +1,6 @@
 package com.example.loginapp.data.network
 
+import com.example.loginapp.data.model.LoginResponse
 import com.example.loginapp.data.model.UserModel
 import com.example.loginapp.data.model.UserRegisterResponse
 import okhttp3.ResponseBody
@@ -19,7 +20,7 @@ interface Api {
      suspend fun getUser(idUser: Int): Response<UserModel>
 
      @FormUrlEncoded
-     @POST("logueo.php")
-     suspend fun loginService(@Field ("nombre") nombre: String, @Field ("pass") pass: String): Response<ResponseBody>
+     @POST("loguear.php")
+     suspend fun loginService(@Field ("nombre") nombre: String, @Field ("pass") pass: String): Response<LoginResponse>
 
 }

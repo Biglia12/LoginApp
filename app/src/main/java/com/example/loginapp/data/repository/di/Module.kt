@@ -1,7 +1,10 @@
 package com.example.loginapp.data.repository.di
 
+import com.example.loginapp.data.network.LoginService
 import com.example.loginapp.data.network.UserService
+import com.example.loginapp.data.repository.LoginRepositoryImpl
 import com.example.loginapp.data.repository.UserRepositoryImpl
+import com.example.loginapp.domain.repository.LoginRepository
 import com.example.loginapp.domain.repository.UserRepository
 import org.koin.dsl.module
 
@@ -13,5 +16,14 @@ val userRepositoryModules = module {
 
     single {
         UserService(get())
+    }
+}
+
+val loginRespositoryModule = module {
+    single<LoginRepository> {
+        LoginRepositoryImpl(loginService = get())
+    }
+    single {
+        LoginService(get())
     }
 }

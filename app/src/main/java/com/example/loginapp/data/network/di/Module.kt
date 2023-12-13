@@ -1,6 +1,7 @@
 package com.example.loginapp.data.network.di
 
 import com.example.loginapp.data.network.Api
+import com.example.loginapp.data.network.LoginService
 import com.example.loginapp.data.network.UserService
 import com.example.loginapp.utils.Constants
 import com.google.gson.Gson
@@ -17,6 +18,10 @@ val networkModule = module {
 
     single {
         UserService(get())
+    }
+
+    single {
+        LoginService(get())
     }
 }
 
