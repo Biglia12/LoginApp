@@ -8,11 +8,15 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.example.loginapp.R
 import com.example.loginapp.databinding.FragmentLoginBinding
-import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
+import com.example.loginapp.ui.viewmodel.LoginViewModel
+import com.example.loginapp.utils.toast
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginFragment : Fragment() {
 
     private lateinit var  binding: FragmentLoginBinding
+    private val loginViewModel by viewModel<LoginViewModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +34,16 @@ class LoginFragment : Fragment() {
         }
 
        binding.buttonLogin.setOnClickListener {
+
+           val user: String = binding.editTextUser.text.toString()
+           val pass: String = binding.editTextPass.text.toString()
+
+           if (user.isNotEmpty() || pass.isNotEmpty()){
+               loginViewModel.
+           }else{
+               requireContext().toast("Campos vacios")
+           }
+
            findNavController().navigate(R.id.homeFragment)
        }
 

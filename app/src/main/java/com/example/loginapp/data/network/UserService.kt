@@ -9,7 +9,7 @@ class UserService(private val api: Api) {
     suspend fun callServiceRegister(hashMap: String, pass: String): UserRegisterResponse? {
         // return withContext(Dispatchers.IO) {
         try {
-            val response = api.callLogin(hashMap, pass)
+            val response = api.insertLoginService(hashMap, pass)
             if (response.isSuccessful) {
                 return response.body()
                 Log.i("ResponseUser", response.toString())

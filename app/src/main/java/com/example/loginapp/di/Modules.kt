@@ -6,6 +6,7 @@ import com.example.loginapp.data.network.UserService
 import com.example.loginapp.data.repository.UserRepositoryImpl
 import com.example.loginapp.domain.repository.UserRepository
 import com.example.loginapp.domain.usecase.UserUseCase
+import com.example.loginapp.ui.viewmodel.LoginViewModel
 import com.example.loginapp.ui.viewmodel.RegisterViewModel
 import com.example.loginapp.utils.Constants
 import com.google.gson.Gson
@@ -21,6 +22,10 @@ val appModule = module {
     // Declara el RegisterViewModel con la dependencia de UserRepository
     viewModel {
         RegisterViewModel(get())
+    }
+
+    viewModel {
+        LoginViewModel()
     }
 }
 
