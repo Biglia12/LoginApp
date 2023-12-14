@@ -1,7 +1,7 @@
 package com.example.loginapp.data.repository
 
-import com.example.loginapp.data.model.UserModel
-import com.example.loginapp.data.model.UserRegisterResponse
+import com.example.loginapp.data.network.entities.response.UserModel
+import com.example.loginapp.data.network.entities.response.UserRegisterResponse
 import com.example.loginapp.data.network.UserService
 import com.example.loginapp.domain.repository.UserRepository
 

@@ -1,6 +1,6 @@
 package com.example.loginapp.data.repository
 
-import com.example.loginapp.data.model.LoginResponse
+import com.example.loginapp.data.network.entities.response.LoginResponse
 import com.example.loginapp.data.network.LoginService
 import com.example.loginapp.domain.repository.LoginRepository
 

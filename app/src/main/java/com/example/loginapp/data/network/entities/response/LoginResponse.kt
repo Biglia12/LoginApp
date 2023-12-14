@@ -1,4 +1,4 @@
-package com.example.loginapp.data.model
+package com.example.loginapp.data.network.entities.response
 import com.google.gson.annotations.SerializedName
 
 data class LoginResponse(

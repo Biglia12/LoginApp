@@ -1,7 +1,7 @@
 package com.example.loginapp.domain.repository
 
-import com.example.loginapp.data.model.UserModel
-import com.example.loginapp.data.model.UserRegisterResponse
+import com.example.loginapp.data.network.entities.response.UserModel
+import com.example.loginapp.data.network.entities.response.UserRegisterResponse
 
 interface UserRepository {
     suspend fun callServiceRegister(user: String, pass: String): UserRegisterResponse?

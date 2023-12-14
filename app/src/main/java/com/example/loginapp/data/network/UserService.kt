@@ -1,8 +1,8 @@
 package com.example.loginapp.data.network
 
 import android.util.Log
-import com.example.loginapp.data.model.UserModel
-import com.example.loginapp.data.model.UserRegisterResponse
+import com.example.loginapp.data.network.entities.response.UserModel
+import com.example.loginapp.data.network.entities.response.UserRegisterResponse
 
 class UserService(private val api: Api) {
 
