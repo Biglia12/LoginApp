@@ -13,6 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.loginapp.R
 import com.example.loginapp.databinding.FragmentLoginBinding
 import com.example.loginapp.ui.viewmodel.LoginViewModel
+import com.example.loginapp.utils.isNetworkAvailable
 import com.example.loginapp.utils.toast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -36,26 +37,26 @@ class LoginFragment : Fragment() {
         listenerText()
 
         binding.buttonLogin.setOnClickListener {
-            val user: String = binding.edittextUser.text.toString()
-            val pass: String = binding.edittextPass.text.toString()
+            if (requireContext().isNetworkAvailable()) {
+                val user: String = binding.edittextUser.text.toString()
+                val pass: String = binding.edittextPass.text.toString()
 
-            if (user.isNotEmpty() && pass.isNotEmpty()) {
-                loginViewModel.callServiceLogin(user, pass)
-            } else {
-                showHelper(user, pass)
-                requireContext().toast("Campos vacios")
+                if (user.isNotEmpty() && pass.isNotEmpty()) {
+                    loginViewModel.callServiceLogin(user, pass)
+                } else {
+                    showHelper(user, pass)
+                    requireContext().toast("Campos vacios")
+                }
+                obserVer()
             }
-
         }
 
         binding.textRegister.setOnClickListener {
             findNavController().navigate(R.id.registerFragment)
         }
 
-
-        obserVer()
-
         return binding.getRoot()
+
     }
 
     private fun listenerText() {

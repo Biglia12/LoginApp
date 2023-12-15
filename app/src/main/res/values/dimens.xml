@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Static sizes -->
+    <dimen name="zero">0dp</dimen>
+    <dimen name="one">1dp</dimen>
+    <dimen name="two">2dp</dimen>
+    <dimen name="circle_radius">250dp</dimen>
+    <dimen name="design_navigation_separator_vertical_padding" tools:override="true">1dp</dimen>
+
+    <!-- Guidelines sizes -->
+    <dimen name="content_inset_tiniest">2dp</dimen>
+    <dimen name="content_inset_tiny">4dp</dimen>
+    <dimen name="content_inset_half">6dp</dimen>
+    <dimen name="content_inset_small">8dp</dimen>
+    <dimen name="content_inset_less">12dp</dimen>
+    <dimen name="content_inset_normal">16dp</dimen>
+    <dimen name="content_inset_plus">20dp</dimen>
+    <dimen name="content_inset_medium">24dp</dimen>
+    <dimen name="content_inset_medium_2">28dp</dimen>
+    <dimen name="content_inset_large">32dp</dimen>
+    <dimen name="content_inset_double">48dp</dimen>
+    <dimen name="content_inset_big">56dp</dimen>
+    <dimen name="content_inset_huge">64dp</dimen>
+
+    <!-- Font sizes -->
+    <dimen name="text_size_headline_1">96sp</dimen>
+    <dimen name="text_size_headline_2">60sp</dimen>
+    <dimen name="text_size_headline_3">48sp</dimen>
+    <dimen name="text_size_headline_4">34sp</dimen>
+    <dimen name="text_size_headline_5">24sp</dimen>
+    <dimen name="text_size_headline_6">20sp</dimen>
+    <dimen name="text_size_headline_7">18sp</dimen>
+    <dimen name="text_size_subtitle_1">16sp</dimen>
+    <dimen name="text_size_subtitle_2">14sp</dimen>
+    <dimen name="text_size_body_1">16sp</dimen>
+    <dimen name="text_size_body_2">14sp</dimen>
+    <dimen name="text_size_button">14sp</dimen>
+    <dimen name="text_size_caption">12sp</dimen>
+    <dimen name="text_size_overline">10sp</dimen>
+    <dimen name="text_size_notification_count">10sp</dimen>
+
+    <!-- Icon sizes -->
+    <dimen name="icon_size_mini">16dp</dimen>
+    <dimen name="icon_size_small">22dp</dimen>
+    <dimen name="icon_size_normal">24dp</dimen>
+    <dimen name="icon_size_medium">32dp</dimen>
+    <dimen name="icon_size_large">48dp</dimen>
+    <dimen name="icon_size_big">56dp</dimen>
+    <dimen name="icon_size_bigger">64dp</dimen>
+    <dimen name="icon_size_ultra_big">72dp</dimen>
+
+    <!-- OnBoarding -->
+    <dimen name="onboarding_card_width">300dp</dimen>
+    <dimen name="onboarding_card_height">450dp</dimen>
+    <dimen name="onboarding_logo_width">80dp</dimen>
+
+    <!-- Splash -->
+    <dimen name="splash_logo_apm_width">234dp</dimen>
+    <dimen name="splash_logo_apm_height">90dp</dimen>
+    <dimen name="splash_logo_elea_width">116dp</dimen>
+    <dimen name="splash_logo_elea_height">48dp</dimen>
+    <dimen name="splash_apm_offset_1">24dp</dimen>
+    <dimen name="splash_elea_offset_1">118dp</dimen>
+    <dimen name="splash_apm_offset_2">58dp</dimen>
+    <dimen name="splash_elea_offset_2">77dp</dimen>
+    <dimen name="splash_curve_height">400dp</dimen>
+
+    <dimen name="indicator_size">16dp</dimen>
+
+    <!-- Home -->
+    <dimen name="navigation_drawer_width">250dp</dimen>
+
+    <!-- Menu barProm material -->
+    <dimen name="logo_size">80dp</dimen>
+
+    <!-- Schedule -->
+    <dimen name="schedule_header_size">72dp</dimen>
+    <dimen name="calendar_day_month_size">32dp</dimen>
+    <dimen name="schedule_popup_min_width">250dp</dimen>
+    <dimen name="home_calendar_width">352dp</dimen>
+    <dimen name="calendar_height">300dp</dimen>
+    <dimen name="calendar_weekly_height">100dp</dimen>
+    <dimen name="schedule_height">500dp</dimen>
+    <dimen name="schedule_default_cell_width">100dp</dimen>
+    <dimen name="schedule_min_cell_width">48dp</dimen>
+
+    <!-- Medic -->
+    <dimen name="medic_counter_width">100dp</dimen>
+    <dimen name="medic_filter_min_width">200dp</dimen>
+    <dimen name="medic_dates_min_width">400dp</dimen>
+    <dimen name="medic_list_height">500dp</dimen>
+
+    <!--Medic Record-->
+    <dimen name="mr_adn_height">180dp</dimen>
+    <dimen name="mr_iv_shield_width">14dp</dimen>
+
+    <!--Constraints -->
+    <dimen name="constraint_container_min_height">600dp</dimen>
+    <dimen name="constraint_container_min_height2">600dp</dimen>
+    <dimen name="constraint_navigation_width">220dp</dimen>
+
+    <!-- TODO: Standardize custom sizes for each layout EXPLICITLY!!! -->
+
+    <!-- layout -->
+    <dimen name="layout_constraintGuide_percent_start">0.00</dimen>
+    <dimen name="layout_constraintGuide_percent_end">1</dimen>
+
+    <!-- fragment_medic_preview -->
+    <dimen name="cl_level_width">196dp</dimen>
+
+    <!--fragment_main_header-->
+    <dimen name="btn_cancel_main_header_margin_start">150dp</dimen>
+    <dimen name="btn_main_header_min_height">20dp</dimen>
+    <dimen name="btn_main_header_vertical_padding">7dp</dimen>
+
+    <!--Profile-->
+    <dimen name="iv_profile_image_margin_start">95dp</dimen>
+    <dimen name="cl_profile_edit_image_margin_start">79dp</dimen>
+    <dimen name="iv_edit_image_width">14dp</dimen>
+    <dimen name="cl_info_margin_horizontal">79dp</dimen>
+
+    <!--Material-->
+    <dimen name="ib_material_padding_horizontal">20dp</dimen>
+
+    <!--Send Promo Material-->
+    <dimen name="send_pm_min_width">660dp</dimen>
+    <dimen name="send_pm_min_height">660dp</dimen>
+
+    <!-- MostPrescribed Item -->
+    <dimen name="most_prescribed_item_height">35dp</dimen>
+
+</resources>
