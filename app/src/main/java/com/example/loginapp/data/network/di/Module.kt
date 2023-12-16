@@ -6,15 +6,21 @@ import com.example.loginapp.data.network.UserService
 import com.example.loginapp.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
-import org.koin.core.qualifier.named
+import okhttp3.Response
+import okhttp3.Route
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.scalars.ScalarsConverterFactory
+import java.util.concurrent.TimeUnit
 
 val networkModule = module {
-    single { createRetrofit(Constants.BASE_URL_LOGIN) }
+    single { createFirstRetrofit(Constants.BASE_URL_LOGIN) }
+
+    //single { createRetrofit(Constants.BASE_URL_LOGIN) }
 
     single {
         UserService(get())
@@ -25,10 +31,31 @@ val networkModule = module {
     }
 }
 
+/*fun createRetrofit(baseUrlLogin: String): Retrofit {
+    val interceptor = HttpLoggingInterceptor()
+    interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+    val okHttpClient = OkHttpClient.Builder()
+        .authenticator { route: Route?, response: Response ->
+            response.request().newBuilder().header("Authorization", "Bearer $token").build()
+        }
+        .readTimeout(45, TimeUnit.SECONDS) // socket timeout
+        .addInterceptor(interceptor)
+        .addInterceptor { chain: Interceptor.Chain ->
+            val request = chain.request().newBuilder()
+                .header("Magazine-EndUser", "magazine")
+                .header("Authorization", "Bearer $token")
+                .build()
+            chain.proceed(request)
+        }.build()
+
+    return Retrofit.Builder().client(okHttpClient)
+        .baseUrl(com.q4tech.magazine.Model.MagApplication.MONAPPLIVIDURIAPI)
+        .addConverterFactory(GsonConverterFactory.create()).build()
+
+}*/
 
 
-
-fun createRetrofit(baseUrl: String): Api {
+fun createFirstRetrofit(baseUrl: String): Api {
     return Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(ScalarsConverterFactory.create()) //important

@@ -21,9 +21,9 @@ class LoginViewModel(val loginUseCase: LoginUseCase) : ViewModel() {
         viewModelScope.launch {
             _progressBar.postValue(true)
             delay(2000)
-            val apiRegister = loginUseCase.login(user, pass)
-            if (apiRegister != null) {
-                if (!apiRegister.error) {
+            val apiLogin = loginUseCase.login(user, pass)
+            if (apiLogin != null) {
+                if (!apiLogin.error) {
                     _userLogued.postValue(true)
                 } else {
                     _userLogued.postValue(false)

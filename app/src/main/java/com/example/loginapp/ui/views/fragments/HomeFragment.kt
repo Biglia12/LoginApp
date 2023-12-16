@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
-import com.example.loginapp.R
 import com.example.loginapp.databinding.FragmentHomeBinding
-import com.example.loginapp.databinding.FragmentLoginBinding
+import com.example.loginapp.ui.viewmodel.Home.HomeViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
     private lateinit var  binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
+    private val homeViewModel by viewModel<HomeViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +39,21 @@ class HomeFragment : Fragment() {
             }
         })
 
+   /*     viewModel.jwt.observe(viewLifecycleOwner){
+            binding.tokenTest.text = it
+        }*/
+
+        homeViewModel.getJwt()
+
+        obserVer()
+
 
         return binding.getRoot()
+    }
+
+    private fun obserVer() {
+        homeViewModel.jwt.observe(viewLifecycleOwner){
+            binding.tokenTest.text = it
+        }
     }
 }
