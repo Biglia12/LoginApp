@@ -14,4 +14,8 @@ class LoginUseCase(private val repository: LoginRepository) {
         return null
     }
 
+    suspend fun isValidToken(): Boolean? {
+        return repository.isValidToken()
+    }
+
 }

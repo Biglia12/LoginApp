@@ -1,8 +1,10 @@
 package com.example.loginapp.data.network
 
 import com.example.loginapp.data.network.entities.response.LoginResponse
+import com.example.loginapp.data.network.entities.response.TokenResponse
 import com.example.loginapp.data.network.entities.response.UserModel
 import com.example.loginapp.data.network.entities.response.UserRegisterResponse
+import okhttp3.ResponseBody
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -21,5 +23,10 @@ interface Api {
      @FormUrlEncoded
      @POST("loguear.php")
      suspend fun loginService(@Field ("nombre") nombre: String, @Field ("pass") pass: String): Response<LoginResponse>
+
+     @FormUrlEncoded
+     @POST("validateToken.php")
+     suspend fun validToken(@Field ("token") token: String): Response<ResponseBody>
+
 
 }

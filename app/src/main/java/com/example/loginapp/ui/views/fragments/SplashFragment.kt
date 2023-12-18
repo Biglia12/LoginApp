@@ -17,7 +17,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class SplashFragment : Fragment() {
 
     private lateinit var binding: FragmentSplasBinding
-    private val splashViewmoodel: SplashViewModel by viewModel<SplashViewModel>()
+    private val splashViewModel: SplashViewModel by viewModel<SplashViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,6 +31,7 @@ class SplashFragment : Fragment() {
         binding = FragmentSplasBinding.inflate(inflater)
 
 
+        splashViewModel.validToken()
 
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)

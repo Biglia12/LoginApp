@@ -1,6 +1,7 @@
 package com.example.loginapp.data.repository.di
 
 import com.example.loginapp.data.network.LoginService
+import com.example.loginapp.data.network.UserService
 import com.example.loginapp.data.repository.HomeRepositoryImpl
 import com.example.loginapp.data.repository.LoginRepositoryImpl
 import com.example.loginapp.data.repository.UserRepositoryImpl
@@ -14,8 +15,8 @@ val repositoryModules = module {
         UserRepositoryImpl(userService = get())
     }
 
-    single<UserRepository> {
-        UserRepositoryImpl(userService = get())
+    single {
+        UserService(get())
     }
 
     single<LoginRepository> {
@@ -25,12 +26,6 @@ val repositoryModules = module {
         LoginService(get())
     }
 
-    single<LoginRepository> {
-        LoginRepositoryImpl(loginService = get(), preferences = get())
-    }
-    single {
-        LoginService(get())
-    }
 
     single<HomeRepository> {
         HomeRepositoryImpl(preferences = get())

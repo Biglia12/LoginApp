@@ -3,9 +3,12 @@ package com.example.loginapp.data.network.di
 import com.example.loginapp.data.network.Api
 import com.example.loginapp.data.network.LoginService
 import com.example.loginapp.data.network.UserService
+import com.example.loginapp.preferences.SharedPreferences
 import com.example.loginapp.utils.Constants
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import okhttp3.OkHttpClient
+import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +19,6 @@ val networkModule = module {
     single { createFirstRetrofit(Constants.BASE_URL_LOGIN) }
 
     //single { createRetrofit(Constants.BASE_URL_LOGIN) }
-
     single {
         UserService(get())
     }
@@ -24,31 +26,43 @@ val networkModule = module {
     single {
         LoginService(get())
     }
+
+    single {
+        createRetrofit(get())
+    }
+
 }
 
-/*fun createRetrofit(baseUrlLogin: String): Retrofit {
+fun createRetrofit(preferences: SharedPreferences): Api {
     val interceptor = HttpLoggingInterceptor()
     interceptor.setLevel(HttpLoggingInterceptor.Level.BODY)
+
     val okHttpClient = OkHttpClient.Builder()
-        .authenticator { route: Route?, response: Response ->
-            response.request().newBuilder().header("Authorization", "Bearer $token").build()
-        }
-        .readTimeout(45, TimeUnit.SECONDS) // socket timeout
         .addInterceptor(interceptor)
-        .addInterceptor { chain: Interceptor.Chain ->
-            val request = chain.request().newBuilder()
-                .header("Magazine-EndUser", "magazine")
-                .header("Authorization", "Bearer $token")
-                .build()
-            chain.proceed(request)
-        }.build()
+        .addInterceptor { chain ->
+            val originalRequest = chain.request()
+            val token = preferences.getJwt()// Implementa esta función según cómo almacenes el token localmente
 
-    return Retrofit.Builder().client(okHttpClient)
-        .baseUrl(com.q4tech.magazine.Model.MagApplication.MONAPPLIVIDURIAPI)
-        .addConverterFactory(GsonConverterFactory.create()).build()
+            val newRequest = if (token != null) {
+                originalRequest.newBuilder()
+                    .header("Authorization", "Bearer $token")
+                    .build()
+            } else {
+                originalRequest
+            }
 
-}*/
+            chain.proceed(newRequest)
+        }
+        .readTimeout(45, TimeUnit.SECONDS)
+        .build()
 
+    return Retrofit.Builder()
+        .client(okHttpClient)
+        .baseUrl(Constants.BASE_URL_LOGIN)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create(Api::class.java)
+}
 
 fun createFirstRetrofit(baseUrl: String): Api {
     return Retrofit.Builder()

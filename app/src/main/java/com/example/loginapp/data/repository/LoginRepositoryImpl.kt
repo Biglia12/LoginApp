@@ -16,4 +16,13 @@ class LoginRepositoryImpl(private val loginService: LoginService, private val pr
         return null
     }
 
+    override suspend fun isValidToken(): Boolean {
+        val token = preferences.getJwt()
+        return if (token.isNullOrEmpty()) {
+            false
+        } else {
+            loginService.isValidToken(token)
+        }
+    }
+
 }
