@@ -7,14 +7,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.fragment.findNavController
 import com.example.loginapp.R
-import com.example.loginapp.databinding.FragmentRegisterFagmentBinding
 import com.example.loginapp.databinding.FragmentSplasBinding
+import com.example.loginapp.ui.viewmodel.splash.SplashViewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SplashFragment : Fragment() {
 
     private lateinit var binding: FragmentSplasBinding
+    private val splashViewmoodel: SplashViewModel by viewModel<SplashViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,8 @@ class SplashFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentSplasBinding.inflate(inflater)
+
+
 
         Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
