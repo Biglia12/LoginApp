@@ -3,7 +3,7 @@ package com.example.loginapp.data.repository
 import com.example.loginapp.data.network.entities.response.LoginResponse
 import com.example.loginapp.data.network.LoginService
 import com.example.loginapp.domain.repository.LoginRepository
-import com.example.loginapp.preferences.SharedPreferences
+import com.example.loginapp.data.preferences.SharedPreferences
 
 class LoginRepositoryImpl(private val loginService: LoginService, private val preferences: SharedPreferences) : LoginRepository {
 

@@ -5,7 +5,7 @@ import com.example.loginapp.data.network.di.networkModule
 import com.example.loginapp.data.repository.di.repositoryModules
 import com.example.loginapp.di.appModule
 import com.example.loginapp.domain.di.domainModule
-import com.example.loginapp.preferences.di.sharedPreferencesModule
+import com.example.loginapp.data.preferences.di.sharedPreferencesModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
@@ -28,7 +28,8 @@ class App: Application() {
                 domainModule ,
                 repositoryModules,
                 networkModule,
-                sharedPreferencesModule)
+                sharedPreferencesModule
+            )
          /*   modules(appModule, userUseCaseModule,
                 loginUseCaseModule, userRepositoryModules,
                 loginRespositoryModule, networkModule,

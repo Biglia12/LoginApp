@@ -1,4 +1,4 @@
-package com.example.loginapp.preferences
+package com.example.loginapp.data.preferences
 
 import android.app.Activity
 import android.content.Context
