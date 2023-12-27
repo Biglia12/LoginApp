@@ -25,6 +25,7 @@ class LoginService(private val api: Api) {
 
     suspend fun isValidToken(token: String): Boolean {
         val response = api.validToken(token)
+        Log.i("token", response.toString())
         if (response.isSuccessful){
             Log.i("token", response.toString())
             return true

@@ -33,9 +33,11 @@ class SplashFragment : Fragment() {
 
         splashViewModel.validToken()
 
-        Handler(Looper.getMainLooper()).postDelayed({
+        obserVer()
+
+    /*    Handler(Looper.getMainLooper()).postDelayed({
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
-        },1000)
+        },1000)*/
 
       /*  binding.btnSplash.setOnClickListener {
             findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
@@ -44,6 +46,18 @@ class SplashFragment : Fragment() {
 
         return binding.getRoot()
 
+
+    }
+
+    private fun obserVer() {
+
+        splashViewModel.tokenValidated.observe(viewLifecycleOwner){tokenValidate ->
+            if (tokenValidate){
+                findNavController().navigate(R.id.action_splashFragment_to_homeFragment)
+            } else {
+                findNavController().navigate(R.id.action_splashFragment_to_loginFragment)
+            }
+        }
 
     }
 
