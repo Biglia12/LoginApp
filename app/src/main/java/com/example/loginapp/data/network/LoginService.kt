@@ -24,15 +24,19 @@ class LoginService(private val api: Api) {
     }
 
     suspend fun isValidToken(token: String): Boolean {
+        try {
         val response = api.validToken(token)
         Log.i("token", response.toString())
-        if (response.isSuccessful){
-            Log.i("token", response.toString())
-            return true
+            if (response.isSuccessful) {
+                Log.i("token", response.toString())
+                return true
+            }
+            ///return requireNotNull(response?.valid)
+        } catch (e: Exception) {
+            Log.i("errorValidToke",e.toString())
         }
         return false
-
-        ///return requireNotNull(response?.valid)
     }
+
 
 }

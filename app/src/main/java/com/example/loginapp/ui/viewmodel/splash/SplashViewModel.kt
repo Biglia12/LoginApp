@@ -22,6 +22,7 @@ class SplashViewModel (private val useCase: LoginUseCase): ViewModel() {
                 _tokenValidated.value = true
             } else {
                 Log.i("token", "respondio mal")
+                _tokenValidated.value = false
             }
         }
 
